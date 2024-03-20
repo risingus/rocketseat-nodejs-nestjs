@@ -2,6 +2,7 @@
   "extends": "@rocketseat/eslint-config/node",
   "rules": {
     "prettier/prettier": 0,
-    "no-useless-constructor": 0
+    "no-useless-constructor": 0,
+    "no-new": "off"
   }
 }
