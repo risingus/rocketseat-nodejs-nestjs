@@ -31,7 +31,7 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "nova pergunta12312312132",
+  "title": "nova pergunta12312312132s",
   "content": "pergunta teste"
 }
 
@@ -46,4 +46,19 @@ Authorization: Bearer {{authToken}}
   "title": "nova pergunt1231",
   "content": "pergunta teste"
 }
+
+
+
+###
+
+# @name Answer_question
+GET  {{baseUrl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "nova pergunt1231",
+  "content": "pergunta teste"
+}
+
 
