@@ -29,6 +29,15 @@ import { CommentOnQuestionController } from './controllers/comment-on-question.c
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment-on-question';
 import { DeleteQuestionCommentController } from './controllers/delete-question-comment-controller';
 import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/delete-question-comment';
+import { CommentOnAnswerController } from './controllers/comment-on-answer.controller';
+import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment-on-answer';
+import { DeleteAnswerCommentController } from './controllers/delete-answer-comment.controller';
+import { DeleteAnswerCommentUseCase } from '@/domain/forum/application/use-cases/delete-answer-comment';
+import { FetchQuestionCommentsController } from './controllers/fetch-question-comments-controller';
+import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-question-comments';
+import { FetchAnswerCommentsController } from './controllers/fetch-answer-comments.controller';
+import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-answer-comments';
+import { UploadAttachmentController } from './controllers/upload-attachment.controller';
 
 
 @Module({
@@ -51,7 +60,13 @@ import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cas
     FetchQuestionAnswersController,
     ChooseQuestionBestAnswerController,
     CommentOnQuestionController,
-    DeleteQuestionCommentController
+    DeleteQuestionCommentController,
+    CommentOnAnswerController,
+    DeleteAnswerController,
+    DeleteAnswerCommentController,
+    FetchQuestionCommentsController,
+    FetchAnswerCommentsController,
+    UploadAttachmentController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -67,7 +82,12 @@ import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cas
     FetchQuestionAnswersUseCase,
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
-    DeleteQuestionCommentUseCase
+    DeleteQuestionCommentUseCase,
+    CommentOnAnswerUseCase,
+    DeleteAnswerUseCase,
+    DeleteAnswerCommentUseCase,
+    FetchQuestionCommentsUseCase,
+    FetchAnswerCommentsUseCase
   ]
 })
 
