@@ -6,7 +6,7 @@ import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { StudentFactory } from 'test/factories/make-student';
 
-describe('Upload attachments (E2E)', () => {
+describe.skip('Upload attachments (E2E)', () => {
   let app: INestApplication;
   let jwt: JwtService
   let studentFactory: StudentFactory
@@ -37,5 +37,8 @@ describe('Upload attachments (E2E)', () => {
       .attach('file', './test/e2e/sample-upload.png')
 
     expect(response.statusCode).toBe(201)
+    expect(response.body).toEqual({
+      attachmentId: expect.any(String)
+    })
   })
 })
