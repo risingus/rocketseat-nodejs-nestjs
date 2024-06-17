@@ -58,6 +58,5 @@ describe('Create Question', () => {
         })
       ])
     )
-
   })
 })
