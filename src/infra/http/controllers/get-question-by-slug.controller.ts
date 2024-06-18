@@ -1,7 +1,6 @@
 import { BadGatewayException, Controller, Get, Param } from '@nestjs/common';
-import { QuestionPresenter } from '../presenters/question-presenter';
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug';
-
+import { QuestionDetailsPresenter } from '../presenters/question-details-presenter';
 
 @Controller('/questions/:slug')
 export class GetQuetionBySlugController {
@@ -15,7 +14,7 @@ export class GetQuetionBySlugController {
 
     if (result.isLeft()) throw new BadGatewayException()
 
-    const question = QuestionPresenter.toHTTP(result.value.question)
+    const question = QuestionDetailsPresenter.toHTTP(result.value.question)
 
     return { question }
   }

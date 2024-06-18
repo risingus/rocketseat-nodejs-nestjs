@@ -1,8 +1,8 @@
 import { BadGatewayException, Controller, Get, Param, Query } from '@nestjs/common';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { z } from 'zod';
-import { CommentPresenter } from '../presenters/comment-presenter';
 import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-answer-comments';
+import { CommentWithAuthorPresenter } from '../presenters/comment-with-author-presenter';
 
 const pageQueryParamSchema = z
   .string()
@@ -21,19 +21,21 @@ type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>
 
 @Controller('/answers/:answerId/comments')
 export class FetchAnswerCommentsController {
-  constructor(private fetchAnswerCommentsCommentss: FetchAnswerCommentsUseCase) { }
+  constructor(private fetchAnswerCommentsComments: FetchAnswerCommentsUseCase) { }
 
   @Get()
   async handle(
     @Query('page', queryValidationPipe) page: PageQueryParamSchema,
     @Param('answerId') answerId: string,
   ) {
-    const result = await this.fetchAnswerCommentsCommentss.execute({ page, answerId })
+    const result = await this.fetchAnswerCommentsComments.execute({ page, answerId })
 
     if (result.isLeft()) throw new BadGatewayException()
 
-    const answerComments = result.value.answerComments.map(CommentPresenter.toHTTP)
+    const comments = result.value.comments.map(CommentWithAuthorPresenter.toHTTP)
 
-    return { answerComments }
+    return { comments }
+
+
   }
 }
