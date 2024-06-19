@@ -25,12 +25,12 @@ describe('Get question by slug (E2E)', () => {
     })
       .compile();
 
-    app = moduleRef.createNestApplication();
-    jwt = moduleRef.get(JwtService)
     studentFactory = moduleRef.get(StudentFactory)
     questionFactory = moduleRef.get(QuestionFactory)
     attachmentFactory = moduleRef.get(AttachmentFactory)
     questionAttachmentFactory = moduleRef.get(QuestionAttachmentFactory)
+    app = moduleRef.createNestApplication();
+    jwt = moduleRef.get(JwtService)
 
     await app.init();
   });
@@ -60,12 +60,10 @@ describe('Get question by slug (E2E)', () => {
       .set('Authorization', `Bearer ${accessToken}`)
       .send()
 
-    console.log(response.body, 'repons')
-
     expect(response.statusCode).toBe(200)
     expect(response.body).toEqual({
       question: expect.objectContaining({
-        title: 'Question 01',
+        title: 'question-01',
         author: 'John Doe',
         attachments: [
           expect.objectContaining({

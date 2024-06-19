@@ -49,14 +49,13 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
       },
       include: {
         author: true,
-        attachments: true
+        attachments: true,
       }
     })
 
     if (!question) return null
 
     return PrismaQuestionDetailsMapper.toDomain(question)
-
   }
 
   async findManyRecent({ page }: PaginationParams): Promise<Question[]> {
