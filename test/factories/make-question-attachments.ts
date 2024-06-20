@@ -31,7 +31,7 @@ export class QuestionAttachmentFactory {
   async makePrismaQuestionAttachment(data: Partial<QuestionAttachmentProps> = {}): Promise<QuestionAttachment> {
     const questionAttachment = makeQuestionAttachment(data)
 
-    this.prisma.attachment.update({
+    await this.prisma.attachment.update({
       where: {
         id: questionAttachment.attachmentId.toString()
       },

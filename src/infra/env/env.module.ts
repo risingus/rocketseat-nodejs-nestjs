@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Injectable, Module } from '@nestjs/common';
 import { EnvService } from './env.service';
 
 @Module({
@@ -9,4 +9,7 @@ import { EnvService } from './env.service';
     EnvService
   ]
 })
+
+
+@Injectable()
 export class EnvModule { }
